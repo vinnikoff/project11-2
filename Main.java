@@ -14,9 +14,10 @@ public class Main {
 
     private static File replacer(Map <String, String> map) {
         Set<String> keys = map.keySet();
-        File file1 = new File("text2.txt");
+      File file1 = new File("test.txt");
         StringBuilder sb = new StringBuilder();
-        try (BufferedReader br = new BufferedReader(new FileReader("test.txt")); BufferedWriter bw = new BufferedWriter(new FileWriter("test2.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("test.txt"))
+             ) {
 
             String s;
             while ((s = br.readLine()) != null) {
@@ -29,6 +30,7 @@ public class Main {
                    new_str = new_str.replaceAll (key, map.get(key));
 
                 }
+            Writer bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("test.txt"), "utf-8"));
             bw.write(new_str);
             bw.flush();
 
